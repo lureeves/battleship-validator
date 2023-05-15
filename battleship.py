@@ -1,24 +1,47 @@
 def validate_battlefield(field):
+    """
+    Validates the arrangement of ships in the battlefield.
 
-    # loop through (double for loops)
-    # check every element for a hit
-    # once a hit is found begin a checking funciton
-        # check hit list set to see if already checked 
-        # 
-        # use flags, to check right, one to check below
-        # if both flags are true, then return false
-        # also check if diagonal is true
-        # 
-        # if right flag is true then go to the right, if another hit is found
-        # keep going to the right until not hit is found or 5 blocks have been hit 
-        # exit if 5 blocks have been hit
-        # repeat the same checks but below for the vertical ships
-        #
-        # once a break is reached, store all preivious hit blocks locations 
-        # in an array where each element is a ship and inside each eleement
-        # is another set of the locations of each part of the ship 
-        #
-        # also store each one of the hits in a set 
+    Args:
+        field (list): A 2-dimensional list representing the battlefield.
+                      Each element is either 0 (empty) or 1 (ship).
+
+    Returns:
+        bool: True if the arrangement of ships is valid, False otherwise.
+
+    The function checks the battlefield for ships and ensures that the arrangement
+    adheres to the following rules:
+    - Ships cannot touch each other, including diagonally.
+    - The number of ships must be as follows: 1 battleship (4 cells),
+      2 cruisers (3 cells each), 3 destroyers (2 cells each), and
+      4 submarines (1 cell each).
+
+    The function iterates over the elements of the battlefield and performs the
+    following steps:
+    - For each hit (cell with a ship), a checking function is called to determine
+      the length and orientation of the ship.
+    - Ships are stored in a list of ship coordinates and added to a set of hit
+      coordinates.
+    - The function checks for diagonal hits, ship overlap, and determines the
+      orientation of the ship.
+    - The length of each ship is determined using a helper function.
+    - After processing the battlefield, the counts of each ship type are compared
+      against the expected counts to determine if the arrangement is valid.
+
+    Example:
+        field = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 1, 0, 1, 1, 1, 0, 0, 0],
+                 [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 1, 1, 1, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+        assert validate_battlefield(field) == True
+    """
 
 
     hit_set = set()
@@ -47,6 +70,7 @@ def validate_battlefield(field):
         return length
 
 
+    # loop through every cell in list
     for row in range(len(field[0])):
         for column in range(len(field)):
 
