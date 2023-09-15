@@ -49,6 +49,17 @@ def validate_battlefield(field):
     orientation = ''
 
     def determine_ship_length(row, column, orientation):
+        """
+        Determines the length of the ship based on its orientation.
+
+        Args:
+            row (int): The row index of the starting cell of the ship.
+            column (int): The column index of the starting cell of the ship.
+            orientation (str): The orientation of the ship ('right' or 'below').
+
+        Returns:
+            int: The length of the ship.
+        """
         length = 1
         zero_found = False
         # check right
@@ -121,9 +132,9 @@ def validate_battlefield(field):
     # count ships: 1 battleship (4 cell), 2 cruiser (3 cell),
     #              3 destroyer (2 cell), and 4 submarines (1 cell) 
     battleship_count = 0
-    cruiser_count = 0
-    destroyer_count = 0
-    submarine_count = 0
+    cruiser_count    = 0
+    destroyer_count  = 0
+    submarine_count  = 0
     ship_coordinates = []
 
     # adding appropriate ships
@@ -135,6 +146,7 @@ def validate_battlefield(field):
         elif len(ship_coordinates) == 2:
             destroyer_count += 1
         else:
+            # if ship length is > 4 or = 1, then sub is incremented by 1
             submarine_count += 1
     
     # return true if all ship counts are correct
@@ -143,10 +155,8 @@ def validate_battlefield(field):
     else:
         return False
 
-
-
-
-battleField =  [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+# example usage
+battleField =  [[0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
                 [1, 1, 1, 1, 0, 0, 0, 0, 0, 1],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
                 [0, 1, 0, 1, 1, 0, 0, 1, 0, 1],
@@ -155,6 +165,6 @@ battleField =  [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 1, 0, 1, 1, 0, 0, 0],
                 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
-                [0, 1, 0, 0, 0, 0, 0, 0, 1, 0]]
+                [0, 1, 1, 1, 1, 1, 0, 0, 1, 0]]
 
 print(validate_battlefield(battleField))
