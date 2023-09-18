@@ -1,27 +1,32 @@
-# Battleship Field Validator
-This repository contains a solution to the Battleship Field Validator problem on Code Wars.
+# Battleship Field Validator 🚢
 
-Link to problem [here](https://www.codewars.com/kata/52bb6539a4cf1b12d90005b7/train/python)
+[![Codewars](https://img.shields.io/badge/Codewars-Problem-red?style=for-the-badge&logo=codewars)](https://www.codewars.com/kata/52bb6539a4cf1b12d90005b7/train/python)
 
-## Problem Description
-The problem requires writing a method that takes a field for the well-known board game "Battleship" as an argument and returns True if it has a valid disposition of ships, False otherwise. The field is guaranteed to be a 10x10 two-dimensional array, where elements in the array are numbers: 0 if the cell is free and 1 if occupied by a ship.
+🎯 **Introduction:** Here is my solution to the Battleship Field Validator problem on Codewars.
 
-### The rules for the Battleship game, specifically the Soviet/Russian version, are as follows:
+---
 
-* There must be a single battleship of size 4 cells.
-* There must be 2 cruisers of size 3 cells each.
-* There must be 3 destroyers of size 2 cells each.
-* There must be 4 submarines of size 1 cell each.
-* Each ship must be a straight line, except for submarines which are single cells.
-* Ships cannot overlap or be in contact with any other ship, neither by edge nor by corner.
+## 📜 Problem Description
+The problem challenges us to create a method that evaluates a field for the renowned board game "Battleship". It should return `True` if the field has a valid disposition of ships, and `False` otherwise. The field is a 10x10 two-dimensional array, with:
+- `0`: The cell is free.
+- `1`: The cell is occupied by a ship.
 
-### Solution
-The provided solution is implemented as the validate_battlefield function in Python. The function takes a 10x10 field as input and checks whether the arrangement of ships in the field is valid. It returns True if the arrangement is valid, and False otherwise.
+### 🚢 Battleship Rules (Soviet/Russian version):
 
-The solution loops through the field, checks for hits, determines ship lengths and orientations, stores ship coordinates, and counts the number of each ship type. It applies the specified rules to validate the arrangement.
+- 🚤 There should be 4 submarines of 1 cell each.
+- 🛥️ There should be 3 destroyers of 2 cells each.
+- 🛳️ There should be 2 cruisers of 3 cells each.
+- 🚢 One battleship of 4 cells.
+- Every ship (except submarines) must be in a straight line.
+- Ships can't overlap or touch either by side or corner.
 
-### Usage
-To use the validate_battlefield function, pass a 10x10 field represented as a 2-dimensional list to the function. Each element of the list should be either 0 (empty) or 1 (ship). The function will return True if the arrangement of ships is valid and False otherwise.
+---
+
+## 🛠 Solution
+The `validate_battlefield` function in Python verifies if the ships on the given field are arranged validly. It checks ship orientations, lengths, and coordinates, and counts each ship type to ensure the rules are met.
+
+## 🚀 Usage
+Invoke the `validate_battlefield` function by passing a 10x10 field represented as a 2-dimensional list. Each list item should be either `0` (empty) or `1` (ship). The function then determines if the ship arrangement is valid.
 
 ### Example usage:
     field =  [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -36,12 +41,12 @@ To use the validate_battlefield function, pass a 10x10 field represented as a 2-
               [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 
     result = validate_battlefield(field)
-    print(result)  # Output: True
+    print(result)  # Output: True   
     
-### Contributing
+### 🤝 Contributing
 Contributions to this repository are welcome. If you have any improvements or suggestions for the solution, please create a pull request.
 
-### MIT License
+### 📜 MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
